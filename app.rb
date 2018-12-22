@@ -14,9 +14,16 @@ require_relative 'lib/services/send_text_message_to_guests'
 
 
 guests_filepath = File.expand_path(File.dirname(__FILE__), "data/guests.yml")
-guests          = BuildGuests.new(guests_filepath).call
 
-list = CircularLinkedList.build(guests)
+if File.exist?(guests_filepath)
+  guests = BuildGuests.new(guests_filepath).call
 
-DumpListToFile.new(list).call
-# SendTextMessageToGuests.new(list).call
+  list = CircularLinkedList.build(guests)
+
+  DumpListToFile.new(list).call
+  puts "No test messages are sent, uncomment next line first!"
+
+  # SendTextMessageToGuests.new(list).call
+else
+  raise ArgumentError, "Provide a data/guests.yml file filled following the guests.sample.yml guidelines"
+end
