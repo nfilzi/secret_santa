@@ -12,7 +12,6 @@ require_relative 'lib/services/build_guests'
 require_relative 'lib/services/dump_list_to_file'
 require_relative 'lib/services/send_text_message_to_guests'
 
-
 guests_filepath = File.expand_path(File.dirname(__FILE__), "data/guests.yml")
 
 if File.exist?(guests_filepath)
@@ -21,7 +20,7 @@ if File.exist?(guests_filepath)
   list = CircularLinkedList.build(guests)
 
   DumpListToFile.new(list).call
-  puts "No test messages are sent, uncomment next line first!"
+  puts "No test messages are sent, uncomment code first!"
 
   # SendTextMessageToGuests.new(list).call
 else
