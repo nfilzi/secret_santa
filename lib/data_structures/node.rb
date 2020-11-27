@@ -5,4 +5,8 @@ class Node
     @data      = data
     @next_node = next_node
   end
+
+  def to_s
+    "#{data} -> #{next_node.data}\n"
+  end
 end
