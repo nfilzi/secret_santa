@@ -9,6 +9,6 @@ class BuildGuests
 
   def call
     guests_data = YAML.load_file(guests_filepath)
-    return guests_data.shuffle.map {|guest_data| Guest.new(guest_data)}
+    return guests_data.map {|guest_data| Guest.new(guest_data)}
   end
 end

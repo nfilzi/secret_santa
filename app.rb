@@ -17,7 +17,7 @@ guests_filepath = File.expand_path(File.dirname(__FILE__), "data/guests.yml")
 if File.exist?(guests_filepath)
   guests = BuildGuests.new(guests_filepath).call
 
-  list = CircularLinkedList.build(guests)
+  list = CircularLinkedList.build(guests.shuffle)
 
   DumpListToFile.new(list).call
   puts "No test messages are sent, uncomment code first!"
